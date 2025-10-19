@@ -1,0 +1,19 @@
+package kio.week16;
+
+public class Solution_거스름돈 {
+    static public int solution(int n, int[] money) {
+        int[] dp = new int[n + 1];
+        dp[0] = 1;
+        for (int coin : money) {
+            for (int i = coin; i <= n; i++) {
+                dp[i] += dp[i - coin];
+            }
+        }
+        return dp[n];
+    }
+    public static void main(String[] args) {
+        int n = 5;
+        int[] money = {1,2,5};
+        System.out.println(solution(n,money));
+    }
+}
